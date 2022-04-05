@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wdio/cli": "^7.19.2"
+    "@wdio/cli": "^7.19.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
