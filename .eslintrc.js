@@ -12,9 +12,11 @@ module.exports = {
     "plugin:mocha/recommended",
   ],
   rules: {
+    // bugged
     "wdio/no-pause": 0, // off
     "wdio/no-debug": 0, // warn
     "wdio/await-expect": 0, // error
+    //
 
     "mocha/no-skipped-tests": "off",
   },
