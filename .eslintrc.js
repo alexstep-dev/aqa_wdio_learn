@@ -15,7 +15,7 @@ module.exports = {
     // bugged
     "wdio/no-pause": 0, // off
     "wdio/no-debug": 1, // warn
-    "wdio/await-expect": 2, // error
+    // "wdio/await-expect": 2, // error
     //
 
     "mocha/no-skipped-tests": "off",
