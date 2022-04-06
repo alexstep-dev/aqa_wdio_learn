@@ -1,10 +1,10 @@
 module.exports = {
   env: {
-    // "browser": true,
+    // browser: true,
     node: true,
     mocha: true,
   },
-  plugins: ["mocha"],
+  plugins: ["wdio", "mocha"],
   parser: "@babel/eslint-parser",
   extends: [
     "eslint:recommended",
@@ -12,10 +12,10 @@ module.exports = {
     "plugin:mocha/recommended",
   ],
   rules: {
-    "wdio/no-pause": 0, // off
-    "wdio/no-debug": 0, // warn
-    "wdio/await-expect": 0, // error
-
+    "wdio/no-pause": "warn",
+    "wdio/no-debug": "warn",
+    "wdio/await-expect": "error",
     "mocha/no-skipped-tests": "off",
+    "mocha/no-mocha-arrows": "off",
   },
 };

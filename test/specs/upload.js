@@ -20,7 +20,7 @@ describe("Upload", function () {
     await expect($("#success")).toHaveText("Freez.jpg");
   });
 
-  xit("Iframe", async function () {
+  it("Iframe", async function () {
     await browser.url(appURL);
     await browser.debug();
     await browser.switchToFrame(await $("#frame"));
