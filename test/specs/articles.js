@@ -13,7 +13,7 @@ describe("FrontendFront", function () {
 
   it("Check first 3 domains", async function () {
     const expectedDomains = [
-      "stackoverflow.blog",
+      "stackoverflow.blogf",
       "blog.logrocket.com",
       "codepen.io",
     ];
