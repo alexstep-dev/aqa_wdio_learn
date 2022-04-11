@@ -33,8 +33,6 @@
     "eslint": "^8.12.0",
     "eslint-plugin-mocha": "^10.0.3",
     "eslint-plugin-wdio": "^7.19.0",
-    "geckodriver": "^3.0.1",
-    "wdio-chromedriver-service": "^7.3.2",
-    "wdio-geckodriver-service": "^2.1.1"
+    "wdio-chromedriver-service": "^7.3.2"
   }
 }
