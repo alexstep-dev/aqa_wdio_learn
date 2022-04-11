@@ -62,6 +62,9 @@ exports.config = {
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
+      // "goog:chromeOptions": {
+      //   args: ["--headless"],
+      // },
     },
     {
       maxInstances: 5,
@@ -157,10 +160,12 @@ exports.config = {
       "junit",
       {
         outputDir: "./test/report",
+        outputFileFormat: function (options) {
+          return `results-${options.cid}.${options.capabilities}.xml`;
+        },
       },
     ],
   ],
-
   //
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
