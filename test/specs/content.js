@@ -94,7 +94,9 @@ describe("Content tests", function () {
   //   });
 
   it("Correct waits with clicks", async function () {
-    const expectedList = ["Now", "Music", "Gaming", "Films"];
+    const expectedListChrome = ["Now", "Music", "Gaming", "Films"];
+    const expectedListFirefox = ["Now", "Music", "Gaming", "Movies"];
+    let expectedList;
     const actualList = [];
 
     await browser.url(appURL);
@@ -122,6 +124,15 @@ describe("Content tests", function () {
     for (const tab of tabs) {
       actualList.push(await tab.getText());
     }
+
+    if (browser.capabilities.browserName === "chrome") {
+      expectedList = expectedListChrome;
+    }
+
+    if (browser.capabilities.browserName === "firefox") {
+      expectedList = expectedListFirefox;
+    }
+
     await expect(expectedList.map((i) => i.toUpperCase())).toEqual(actualList);
   });
 });
