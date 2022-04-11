@@ -114,7 +114,7 @@ describe("Content tests", function () {
     );
 
     await tabsWrapper.waitForDisplayed({
-      timeout: 5000,
+      timeout: 10000,
     });
 
     const tabs = await tabsWrapper.$$("tp-yt-paper-tab");
