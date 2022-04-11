@@ -119,12 +119,12 @@ exports.config = {
   user: process.env.BROWSERSTACK_USERNAME,
   key: process.env.BROWSERSTACK_ACCESS_KEY,
   services: [
-    // "chromedriver",
-    // "geckodriver",
-    [
-      "selenium-standalone",
-      { drivers: { firefox: "0.30.0", chrome: "100.0.4896.60" } },
-    ],
+    "chromedriver",
+    "geckodriver",
+    // [
+    //   "selenium-standalone",
+    //   { drivers: { firefox: "0.30.0", chrome: "100.0.4896.60" } },
+    // ],
     // [
     //   "browserstack",
     // ],
