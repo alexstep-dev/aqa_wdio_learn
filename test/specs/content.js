@@ -94,7 +94,7 @@ describe("Content tests", function () {
   //   });
 
   it("Correct waits with clicks", async function () {
-    const expectedList = ["Now", "Music", "Gaming", "Movies"];
+    const expectedList = ["Nowц", "Music", "Gaming", "Movies"];
     const actualList = [];
 
     await browser.url(appURL);
