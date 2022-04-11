@@ -22,7 +22,7 @@ exports.config = {
   //
   specs: ["./test/specs/**/*.js"],
   // Patterns to exclude.
-  exclude: ["./test/specs/upload.js"],
+  exclude: ["./test/specs/upload.js", "./test/specs/form.js"],
   suites: {
     front: ["./test/specs/nav.js", "./test/specs/articles.js"],
     userForm: ["./test/specs/form.js"],
