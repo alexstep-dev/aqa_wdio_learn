@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="FrontendFront" timestamp="2022-04-11T17:31:18" time="2.882" tests="3" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="FrontendFront"/>
+      <property name="capabilities" value="firefox.99_0.windows"/>
+      <property name="file" value=".\test\specs\articles.js"/>
+    </properties>
+    <testcase classname="firefox.99_0.windows.FrontendFront" name="Articles amount should equals 12" time="0.061">
+      <system-out><![CDATA[
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/elements - {"using":"css selector","value":".stories-list li:not(.ads-hosting)"}
+RESULT: {"using":"css selector","value":".stories-list li:not(.ads-hosting)"}
+]]></system-out>
+    </testcase>
+    <testcase classname="firefox.99_0.windows.FrontendFront" name="Check first 3 domains" time="0.359">
+      <system-out><![CDATA[
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/elements - {"using":"css selector","value":".stories-list li:not(.ads-hosting)"}
+RESULT: {"using":"css selector","value":".stories-list li:not(.ads-hosting)"}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/5bd0b0bc-3bfe-422b-894a-8e6d41938da4/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/d40bc036-8c63-447a-bde3-209389f444ac/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/732ca9ad-8730-4887-8fb0-62ceeaff8c87/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/12428445-512a-4a25-8492-ffb406183b84/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/bbfc979f-fb8c-4cb2-a6a6-9476a0128de9/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/986754b0-ff72-4a56-a2c4-203acf93850b/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/892fdcfd-7a00-425f-917c-4491dce5d0b6/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/85212aca-908b-438f-8027-d5d243f38db8/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/4d03ed83-e178-415f-ba02-ae22fdcf1409/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/9405fe91-1c79-4731-bd3f-4cc523d8becd/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/ad06f75c-5590-4f37-81fb-afc9b8442823/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/3f55ff3e-9188-45b0-95df-3cb0e2d10ea7/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/6b9aedd8-c59f-4b51-9b88-8dbb394c2dfe/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/2a83382f-e92d-4f3f-8c80-f727c55f8293/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/e126f7da-523e-4aa1-a743-8e561fd6fa5e/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/59540176-87f9-4481-84d5-a8ba62b2d1bd/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/4c2aad8b-ccb1-4bef-8f00-37a5f4ad2723/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/984b37d2-8441-4be0-ade7-b6891620e89e/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/be6cc581-1c1c-4983-8576-beae125bd713/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/f4897f50-1dc5-4fe5-b528-f90e08c5bb7b/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/efd727cd-fc62-4f06-b12b-cd8d8ef89177/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/2193135a-c749-47bf-b760-984cd1da6863/text - {}
+RESULT: {}
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element/4abd1947-76ba-420f-8f6c-e0e374ac135a/element - {"using":"css selector","value":".domain"}
+RESULT: {"using":"css selector","value":".domain"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/3efeb7a1-c2a1-473d-b537-29f3704100f1/text - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="firefox.99_0.windows.FrontendFront" name="Header contains a text" time="0.025">
+      <system-out><![CDATA[
+COMMAND: POST /session/30462494-5158-4622-b342-1c7826a5aa80/element - {"using":"css selector","value":".stories-list li:first-child h2"}
+RESULT: {"using":"css selector","value":".stories-list li:first-child h2"}
+COMMAND: GET /session/30462494-5158-4622-b342-1c7826a5aa80/element/63c5a251-bff5-4c86-a161-2c5809bfb12c/text - {}
+RESULT: {}
+COMMAND: DELETE /session/30462494-5158-4622-b342-1c7826a5aa80 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

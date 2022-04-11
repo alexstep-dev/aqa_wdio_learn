@@ -1,5 +1,4 @@
 import { join } from "path";
-import AllureReporter from "@wdio/allure-reporter";
 
 import UploadPage from "../pages/upload-page";
 
@@ -13,11 +12,6 @@ describe("Upload", function () {
   // afterEach(async () => {});
 
   it("Select file and submit the form", async function () {
-    AllureReporter.addFeature("File uploading feature");
-    AllureReporter.addDescription(
-      "Remove a class from input to make it visiible and upload the file. After check an alert"
-    );
-
     if (browser.capabilities.browserName === "firefox") {
       this.skip();
     }

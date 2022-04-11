@@ -152,12 +152,11 @@ exports.config = {
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
     "spec",
+    "dot",
     [
-      "allure",
+      "junit",
       {
-        outputDir: "allure-results",
-        disableWebdriverStepsReporting: false,
-        disableWebdriverScreenshotsReporting: false,
+        outputDir: "./test/report",
       },
     ],
   ],
