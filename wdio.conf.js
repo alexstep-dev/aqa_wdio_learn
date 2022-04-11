@@ -20,11 +20,13 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/upload.js"],
+  specs: ["./test/specs/**/*.js"],
   // Patterns to exclude.
-  exclude: [
-    // 'path/to/excluded/files'
-  ],
+  exclude: ["./test/specs/upload.js"],
+  suites: {
+    front: ["./test/specs/nav.js", "./test/specs/articles.js"],
+    userForm: ["./test/specs/form.js"],
+  },
   //
   // ============
   // Capabilities
@@ -61,11 +63,11 @@ exports.config = {
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
     },
-    // {
-    //   maxInstances: 5,
-    //   browserName: "firefox",
-    //   acceptInsecureCerts: true,
-    // },
+    {
+      maxInstances: 5,
+      browserName: "firefox",
+      acceptInsecureCerts: true,
+    },
   ],
   //
   // ===================
@@ -114,7 +116,19 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ["chromedriver", "geckodriver"],
+  user: process.env.BROWSERSTACK_USERNAME,
+  key: process.env.BROWSERSTACK_ACCESS_KEY,
+  services: [
+    // "chromedriver",
+    // "geckodriver",
+    [
+      "selenium-standalone",
+      { drivers: { firefox: "0.30.0", chrome: "100.0.4896.60" } },
+    ],
+    // [
+    //   "browserstack",
+    // ],
+  ],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -136,7 +150,17 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  reporters: [
+    "spec",
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+      },
+    ],
+  ],
 
   //
   // Options to be passed to Mocha.
@@ -215,7 +239,9 @@ exports.config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  // beforeTest: function (test, context) {
+  // beforeTest: async function () // test, context
+  // {
+  //   await browser.setWindowSize(1024, 768);
   // },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling

@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wdio",
+    "report": "allure generate allure-results && allure open",
+    "fflush": "rm -rf allure-results && rm -rf allure-report",
+    "bs": "cross-env BROWSERSTACK_USERNAME=1 BROWSERSTACK_ACCESS_KEY=1 wdio --spec ./test/specs/articles.js"
   },
   "keywords": [],
   "author": "",
@@ -18,15 +21,17 @@
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.7",
+    "@faker-js/faker": "^6.1.2",
+    "@wdio/allure-reporter": "^7.19.1",
+    "@wdio/browserstack-service": "^7.19.3",
     "@wdio/local-runner": "^7.19.2",
     "@wdio/mocha-framework": "^7.19.2",
+    "@wdio/selenium-standalone-service": "^7.19.1",
     "@wdio/spec-reporter": "^7.19.1",
-    "chromedriver": "^100.0.0",
+    "allure-commandline": "^2.17.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.12.0",
     "eslint-plugin-mocha": "^10.0.3",
-    "eslint-plugin-wdio": "^7.19.0",
-    "geckodriver": "^3.0.1",
-    "wdio-chromedriver-service": "^7.3.2",
-    "wdio-geckodriver-service": "^2.1.1"
+    "eslint-plugin-wdio": "^7.19.0"
   }
 }

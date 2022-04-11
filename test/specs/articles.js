@@ -1,25 +1,24 @@
-const appURL = "https://frontendfront.com/";
+import HomePage from "../pages/article-page";
 
-describe("Medium", function () {
+describe("FrontendFront", function () {
+  before(async () => {
+    await HomePage.open();
+  });
+
   it("Articles amount should equals 12", async function () {
-    await browser.url(appURL);
-
-    const articles = await $$(".stories-list li:not(.ads-hosting)");
+    const articles = await HomePage.articles;
 
     await expect(articles.length).toBe(12);
   });
 
   it("Check first 3 domains", async function () {
     const expectedDomains = [
-      "www.smashingmagazine.com",
-      "css-tricks.com",
-      "pineco.de",
+      "stackoverflow.blog",
+      "blog.logrocket.com",
+      "codepen.io",
     ];
     const actualDomains = [];
-
-    await browser.url(appURL);
-
-    const articles = await $$(".stories-list li:not(.ads-hosting)");
+    const articles = await HomePage.articles;
 
     for (const article of articles) {
       actualDomains.push(await article.$(".domain").getText());
@@ -28,9 +27,7 @@ describe("Medium", function () {
     await expect(actualDomains.slice(0, 3)).toEqual(expectedDomains);
   });
 
-  it("Header contains HTML", async function () {
-    await browser.url(appURL);
-
+  it("Header contains a text", async function () {
     const header = $(".stories-list li:first-child h2");
 
     /*
@@ -40,6 +37,6 @@ describe("Medium", function () {
     console.log("///////////////////////////////////")
     */
 
-    await expect(header).toHaveTextContaining("HTML");
+    await expect(header).toHaveTextContaining("Picture");
   });
 });

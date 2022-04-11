@@ -1,14 +1,26 @@
 import { join } from "path";
+import AllureReporter from "@wdio/allure-reporter";
 
-const appURL = "http://localhost:3000";
+import UploadPage from "../pages/upload-page";
 
 describe("Upload", function () {
-  xit("Select file and submit the form", async function () {
+  before(async () => {
+    await UploadPage.open();
+    await UploadPage.setBreakPointMD();
+  });
+  // beforeEach(async () => {});
+  // after(async () => {});
+  // afterEach(async () => {});
+
+  it("Select file and submit the form", async function () {
+    AllureReporter.addFeature("File uploading feature");
+    AllureReporter.addDescription(
+      "Remove a class from input to make it visiible and upload the file. After check an alert"
+    );
+
     if (browser.capabilities.browserName === "firefox") {
       this.skip();
     }
-
-    await browser.url(appURL);
     const filePath = join(__dirname, "..", "data", "Freez.jpg");
     const uploadedFile = await browser.uploadFile(filePath);
     await browser.execute(
@@ -21,10 +33,8 @@ describe("Upload", function () {
   });
 
   it("Iframe", async function () {
-    await browser.url(appURL);
-    await browser.debug();
     await browser.switchToFrame(await $("#frame"));
 
-    await expect($("#player")).toExist();
+    await expect($("#player")).toBeExisting();
   });
 });

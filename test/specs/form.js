@@ -1,19 +1,13 @@
-const appURL = "http://localhost:3000";
+/* FormApp.js */
+import { faker } from "@faker-js/faker";
+
+import FormPage from "../pages/form-page";
 
 describe("Form", function () {
-  //   it("Check URL", async () => {
-  //     await browser.url(appURL);
-
-  //     await expect(browser).toHaveUrl(appURL);
-  //   });
-
   // !! Set waitforTimeout: 1000
   it("Populate with waiting", async function () {
-    await browser.url(appURL);
-    // addValue -- add the data to the field
-    // setValue -- erase existing data in a field and set new value
-
-    const form = $("#user");
+    await FormPage.open();
+    const form = FormPage.userForm;
     await form.waitUntil(
       async function () {
         return await this.isDisplayed();
@@ -23,17 +17,15 @@ describe("Form", function () {
         timeoutMsg: "Form wasn't displayed",
       }
     );
-
-    await $("#user #name").addValue("John");
-    await $("#user #age").addValue(25);
-    await $("#user #about").addValue(
-      "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+    await FormPage.pupulateForm(
+      faker.name.firstName(),
+      faker.mersenne.rand(115, 25),
+      faker.lorem.sentence()
     );
-
-    const successBtn = $('#user button[type="submit"]');
-    await successBtn.waitForEnabled({ timeout: 3000 });
-    await successBtn.click();
-    const successAlert = $("#success");
+    const submitBtn = FormPage.submitBtn;
+    await submitBtn.waitForEnabled({ timeout: 3000 });
+    await submitBtn.click();
+    const successAlert = FormPage.successAlert;
 
     await expect(await successAlert.isExisting()).toBe(true);
   });
