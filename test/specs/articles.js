@@ -13,8 +13,8 @@ describe("FrontendFront", function () {
 
   it("Check first 3 domains", async function () {
     const expectedDomains = [
-      "stackoverflow.blog",
       "webkit.org",
+      "stackoverflow.blog",
       "blog.logrocket.com",
     ];
     const actualDomains = [];
@@ -37,6 +37,6 @@ describe("FrontendFront", function () {
     console.log("///////////////////////////////////")
     */
 
-    await expect(header).toHaveTextContaining("Picture");
+    await expect(header).toHaveTextContaining("Safari");
   });
 });
