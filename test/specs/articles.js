@@ -14,8 +14,8 @@ describe("FrontendFront", function () {
   it("Check first 3 domains", async function () {
     const expectedDomains = [
       "stackoverflow.blog",
+      "webkit.org",
       "blog.logrocket.com",
-      "codepen.io",
     ];
     const actualDomains = [];
     const articles = await HomePage.articles;
