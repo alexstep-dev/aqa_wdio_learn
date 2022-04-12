@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio",
-    "bs": "cross-env BROWSERSTACK_USERNAME=1 BROWSERSTACK_ACCESS_KEY=1 wdio --spec ./test/specs/articles.js"
+    "bs": "cross-env BROWSERSTACK_USERNAME=1 BROWSERSTACK_ACCESS_KEY=1 wdio --spec ./test/specs/articles.js",
+    "xview": "npx xunit-viewer -r ./test/report"
   },
   "keywords": [],
   "author": "",
