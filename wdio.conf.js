@@ -71,6 +71,16 @@ exports.config = {
       browserName: "firefox",
       acceptInsecureCerts: true,
     },
+    // {
+    //   maxInstances: 5,
+    //   browserName: "safari",
+    //   'bstack:options' : {
+    //     os: "OS X",
+    //     osVersion: "Monterey"
+    //   },
+    //   acceptInsecureCerts: true,
+    //   // port: 4444,
+    // },
   ],
   //
   // ===================
@@ -106,7 +116,7 @@ exports.config = {
   baseUrl: "http://localhost",
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 10000,
+  waitforTimeout: 5000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
@@ -128,9 +138,7 @@ exports.config = {
       "selenium-standalone",
       { drivers: { firefox: "0.30.0", chrome: "100.0.4896.60" } },
     ],
-    // [
-    //   "browserstack",
-    // ],
+    // "browserstack",
   ],
 
   // Framework you want to run your specs with.
