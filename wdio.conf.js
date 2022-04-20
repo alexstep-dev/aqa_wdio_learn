@@ -1,3 +1,5 @@
+import { join } from "path"
+
 exports.config = {
   //
   // ====================
@@ -22,7 +24,10 @@ exports.config = {
   //
   specs: ["./test/specs/**/*.js"],
   // Patterns to exclude.
-  exclude: ["./test/specs/upload.js", "./test/specs/form.js"],
+  exclude: [
+    // "./test/specs/upload.js",
+    //  "./test/specs/form.js"
+  ],
   suites: {
     front: ["./test/specs/nav.js", "./test/specs/articles.js"],
     userForm: ["./test/specs/form.js"],
@@ -66,11 +71,11 @@ exports.config = {
       //   args: ["--headless"],
       // },
     },
-    {
-      maxInstances: 5,
-      browserName: "firefox",
-      acceptInsecureCerts: true,
-    },
+    // {
+    //   maxInstances: 5,
+    //   browserName: "firefox",
+    //   acceptInsecureCerts: true,
+    // },
     // {
     //   maxInstances: 5,
     //   browserName: "safari",
@@ -132,12 +137,12 @@ exports.config = {
   user: process.env.BROWSERSTACK_USERNAME,
   key: process.env.BROWSERSTACK_ACCESS_KEY,
   services: [
-    // "chromedriver",
+    "chromedriver",
     // "geckodriver",
-    [
-      "selenium-standalone",
-      { drivers: { firefox: "0.30.0", chrome: "100.0.4896.60" } },
-    ],
+    // [
+    //   "selenium-standalone",
+    //   { drivers: { firefox: "0.30.0", chrome: "100.0.4896.60" } },
+    // ],
     // "browserstack",
   ],
 
@@ -169,7 +174,7 @@ exports.config = {
       {
         outputDir: "./test/report",
         outputFileFormat: function (options) {
-          return `results-${options.cid}.${options.capabilities}.xml`;
+          return `results-${options.cid}.${options.capabilities}.xml`
         },
       },
     ],
@@ -179,7 +184,7 @@ exports.config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: "bdd",
-    timeout: 60000,
+    timeout: 60000, // debug time
   },
   //
   // =====
@@ -233,8 +238,32 @@ exports.config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  // before: function (capabilities, specs) {
-  // },
+  // before: function (capabilities, specs) {},
+  before: function () {
+    browser.addCommand("uploadFileInHerokuService", async (fileName) => {
+      const filePath = join(__dirname, "test", "data", fileName)
+      const localFile = await browser.uploadFile(filePath)
+      await $("#file-upload").setValue(localFile)
+      await $("#file-submit").click()
+    })
+
+    browser.addCommand("waitUploadingResult", async () => {
+      const successElement = $("#uploaded-files")
+
+      await successElement.waitUntil(
+        async function () {
+          return await this.isDisplayed()
+        },
+        {
+          timeout: 5000,
+          interval: 250,
+          timeoutMsg: "Success element is absent",
+        }
+      )
+
+      return await successElement.getText()
+    })
+  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
@@ -253,7 +282,8 @@ exports.config = {
    */
   // beforeTest: async function () // test, context
   // {
-  //   await browser.setWindowSize(1024, 768);
+  //   // await browser.setWindowSize(1024, 768);
+  //   // await browser.pause(10000)
   // },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
@@ -329,4 +359,4 @@ exports.config = {
    */
   // onReload: function(oldSessionId, newSessionId) {
   // }
-};
+}

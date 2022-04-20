@@ -1,34 +1,51 @@
-import { join } from "path";
+import { join } from "path"
 
-import UploadPage from "../pages/upload-page";
+// import UploadPage from "../pages/upload-page"
 
 describe("Upload", function () {
-  before(async () => {
-    await UploadPage.open();
-    await UploadPage.setBreakPointMD();
-  });
-  // beforeEach(async () => {});
+  // before(async () => {
+  //   await UploadPage.setBreakPointMD()
+  //   await UploadPage.open()
+  // })
+  beforeEach(async () => {
+    await browser.url("https://the-internet.herokuapp.com/upload")
+  })
   // after(async () => {});
   // afterEach(async () => {});
 
-  it("Select file and submit the form", async function () {
+  xit("Select file and submit the form", async function () {
     if (browser.capabilities.browserName === "firefox") {
-      this.skip();
+      this.skip()
     }
-    const filePath = join(__dirname, "..", "data", "Freez.jpg");
-    const uploadedFile = await browser.uploadFile(filePath);
+    const filePath = join(__dirname, "..", "data", "Freez.jpg")
+    const localFile = await browser.uploadFile(filePath)
     await browser.execute(
       'document.querySelector("#file").classList.remove("hidden")'
-    );
-    await $("#file").setValue(uploadedFile);
-    await $('#upload [type="submit"]').click();
+    )
+    await $("#file").setValue(localFile)
+    await $('#upload [type="submit"]').click()
 
-    await expect($("#success")).toHaveText("Freez.jpg");
-  });
+    await expect($("#success")).toHaveText("Freez.jpg")
+  })
 
-  it("Iframe", async function () {
-    await browser.switchToFrame(await $("#frame"));
+  xit("Iframe", async function () {
+    await browser.switchToFrame(await $("#frame"))
 
-    await expect($("#player")).toBeExisting();
-  });
-});
+    await expect($("#player")).toBeExisting()
+  })
+
+  it("Heroku upload Freez", async function () {
+    const fileName = "Freez.jpg"
+    await browser.uploadFileInHerokuService(fileName)
+
+    // await expect($("#uploaded-files")).toHaveText(fileName)
+    await expect(await browser.waitUploadingResult()).toBe(fileName)
+  })
+
+  it("Heroku upload Sunflowers", async function () {
+    const fileName = "Sunflowers.jpg"
+    await browser.uploadFileInHerokuService(fileName)
+
+    await expect(await browser.waitUploadingResult()).toBe(fileName)
+  })
+})

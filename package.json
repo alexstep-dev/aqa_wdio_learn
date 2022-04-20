@@ -6,7 +6,8 @@
   "scripts": {
     "test": "wdio",
     "bs": "cross-env BROWSERSTACK_USERNAME=1 BROWSERSTACK_ACCESS_KEY=1 wdio --spec ./test/specs/articles.js",
-    "xview": "npx xunit-viewer -r ./test/report"
+    "report": "npx xunit-viewer -r ./test/report",
+    "fflush": "rm ./index.html && rm -rf ./test/report"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "@wdio/mocha-framework": "^7.19.2",
     "@wdio/selenium-standalone-service": "^7.19.1",
     "@wdio/spec-reporter": "^7.19.1",
+    "chromedriver": "^100.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.12.0",
     "eslint-plugin-mocha": "^10.0.3",
