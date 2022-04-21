@@ -121,7 +121,7 @@ exports.config = {
   baseUrl: "http://localhost",
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 5000,
+  waitforTimeout: 5000, // wdio assertions awaitings as well
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
@@ -249,7 +249,6 @@ exports.config = {
 
     browser.addCommand("waitUploadingResult", async () => {
       const successElement = $("#uploaded-files")
-
       await successElement.waitUntil(
         async function () {
           return await this.isDisplayed()

@@ -1,27 +1,44 @@
 import { join } from "path"
 
-// import UploadPage from "../pages/upload-page"
+import UploadPage from "../pages/upload-page"
 
 describe("Upload", function () {
-  // before(async () => {
-  //   await UploadPage.setBreakPointMD()
-  //   await UploadPage.open()
-  // })
-  beforeEach(async () => {
-    await browser.url("https://the-internet.herokuapp.com/upload")
+  before(async () => {
+    await UploadPage.setBreakPointMD()
+    await UploadPage.open()
   })
-  // after(async () => {});
-  // afterEach(async () => {});
 
-  xit("Select file and submit the form", async function () {
+  // beforeEach(async () => {
+  //   // await browser.throttle("Regular3G")
+  //   await browser.url("https://the-internet.herokuapp.com/upload")
+  // })
+  // afterEach(async function () {
+  //   if (this.currentTest.title !== "Heroku upload Sunflowers") {
+  //     await browser.reloadSession()
+  //   }
+  // })
+
+  // after(async () => {});
+
+  it("Get title in 3s", async function () {
+    const result = await browser.executeAsync((done) => {
+      setTimeout(() => {
+        done(document.title)
+      }, 3000)
+    })
+
+    await expect(result).toBe("React App")
+  })
+
+  it("Select file and submit the form", async function () {
     if (browser.capabilities.browserName === "firefox") {
       this.skip()
     }
     const filePath = join(__dirname, "..", "data", "Freez.jpg")
     const localFile = await browser.uploadFile(filePath)
-    await browser.execute(
-      'document.querySelector("#file").classList.remove("hidden")'
-    )
+    await browser.execute(() => {
+      document.querySelector("#file").classList.remove("hidden")
+    })
     await $("#file").setValue(localFile)
     await $('#upload [type="submit"]').click()
 
@@ -34,7 +51,7 @@ describe("Upload", function () {
     await expect($("#player")).toBeExisting()
   })
 
-  it("Heroku upload Freez", async function () {
+  xit("Heroku upload Freez", async function () {
     const fileName = "Freez.jpg"
     await browser.uploadFileInHerokuService(fileName)
 
@@ -42,7 +59,7 @@ describe("Upload", function () {
     await expect(await browser.waitUploadingResult()).toBe(fileName)
   })
 
-  it("Heroku upload Sunflowers", async function () {
+  xit("Heroku upload Sunflowers", async function () {
     const fileName = "Sunflowers.jpg"
     await browser.uploadFileInHerokuService(fileName)
 
