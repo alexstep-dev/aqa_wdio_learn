@@ -1,6 +1,6 @@
 import { join } from "path"
 
-import cucumberConfig from "./cucumber.conf"
+// import cucumberConfig from "./cucumber.conf"
 
 exports.config = {
   //
@@ -363,5 +363,5 @@ exports.config = {
   // }
 
   // Enable Cucumber framework
-  ...cucumberConfig
+  // ...cucumberConfig
 }

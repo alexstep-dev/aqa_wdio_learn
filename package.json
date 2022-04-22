@@ -7,7 +7,8 @@
     "test": "wdio",
     "bs": "cross-env BROWSERSTACK_USERNAME=1 BROWSERSTACK_ACCESS_KEY=1 wdio --spec ./test/specs/articles.js",
     "report": "npx xunit-viewer -r ./test/report",
-    "fflush": "rm ./index.html && rm -rf ./test/report"
+    "fflush": "rm ./index.html && rm -rf ./test/report",
+    "percy": "cross-env PERCY_TOKEN=1 percy exec -- wdio --spec ./test/specs/visual/form.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,8 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/register": "^7.17.7",
     "@faker-js/faker": "^6.1.2",
+    "@percy/cli": "^1.1.0",
+    "@percy/webdriverio": "^2.0.1",
     "@wdio/browserstack-service": "^7.19.3",
     "@wdio/cucumber-framework": "^7.19.5",
     "@wdio/dot-reporter": "^7.19.1",
