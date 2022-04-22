@@ -10,6 +10,10 @@ class InventoryPage {
   get inventoryItems() {
     return $$(".inventory_item")
   }
+
+  assertInventoryPage() {
+    return expect(this.inventoryListConteiner).toBeDisplayed()
+  }
 }
 
 export default new InventoryPage()

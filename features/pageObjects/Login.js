@@ -1,4 +1,6 @@
-class LoginPage {
+import AbstractPage from "./Abstract"
+
+class LoginPage extends AbstractPage {
   open() {
     return browser.url("https://www.saucedemo.com")
   }
@@ -15,6 +17,10 @@ class LoginPage {
     return $("#login-button")
   }
 
+  get loginFailureAlert() {
+    return $('[data-test="error"]')
+  }
+
   async fillLoginForm(userName = "standard_user", password = "secret_sauce") {
     await this.userNameField.addValue(userName)
     await this.passwordField.addValue(password)
@@ -22,6 +28,10 @@ class LoginPage {
 
   async clickLoginBtn() {
     await this.loginBtn.click()
+  }
+
+  async assertLoginFailureAlert() {
+    return await expect(this.loginFailureAlert).toBeDisplayed()
   }
 }
 

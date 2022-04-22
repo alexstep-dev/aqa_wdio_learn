@@ -1,5 +1,7 @@
 import { join } from "path"
 
+import cucumberConfig from "./cucumber.conf"
+
 exports.config = {
   //
   // ====================
@@ -22,7 +24,8 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/*.js"],
+  // specs: ["./test/specs/**/*.js"],
+  specs: ["./test/specs/swag/**/*.js"],
   // Patterns to exclude.
   exclude: [
     // "./test/specs/upload.js",
@@ -358,4 +361,7 @@ exports.config = {
    */
   // onReload: function(oldSessionId, newSessionId) {
   // }
+
+  // Enable Cucumber framework
+  ...cucumberConfig
 }

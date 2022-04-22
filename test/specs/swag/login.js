@@ -1,5 +1,5 @@
-import LoginPage from "../pages/swaglabs/login-page"
-import InventoryPage from "../pages/swaglabs/inventory-page"
+import LoginPage from "../../pages/swaglabs/login-page"
+import InventoryPage from "../../pages/swaglabs/inventory-page"
 
 describe("Swaglabs login", function () {
   before(async () => {
@@ -9,7 +9,7 @@ describe("Swaglabs login", function () {
   })
 
   it("Fill form, click login, check inventory list", async function () {
-    await LoginPage.fillLoginForm("standard_user", "secret_sauce")
+    await LoginPage.fillLoginForm()
     await LoginPage.clickLoginBtn()
 
     await expect(InventoryPage.inventoryListConteiner).toBeExisting()
